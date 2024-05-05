@@ -3,7 +3,7 @@
 #include "domains.h"
 
 int main(void) {
-    
+    // Read user input
     #define LEN 4
     char user_input[LEN];
     printf("Enter a domain including the . (e.g. .uk): ");
@@ -14,7 +14,7 @@ int main(void) {
         printf("Error! The first character entered should be a .");
         return 0;
     }
-    
+    // Loop through the array of ccTLDs to find a match
     int i = 0;
     int x = 0;
     
