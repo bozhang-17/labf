@@ -11,7 +11,7 @@ int main(void) {
     
     // Check if the first character entered is a dot
     if (user_input[0] != '.') {
-        printf("Error! The first character entered should be a .\n");
+        printf("Error! The first character entered should be a .");
         return 0;
     }
     
