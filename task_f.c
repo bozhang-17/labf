@@ -7,28 +7,27 @@
 int main(void) {
     
     // Read user input
-    #define LEN 4
-    char user_input[LEN];
+    #define MAX_LEN 100
+    char user_input[MAX_LEN];
     printf("Enter a domain including the . (e.g. .uk): ");
-    fgets(user_input, LEN, stdin);
+    fgets(user_input, MAX_LEN, stdin);
     
+    // Remove newline character from user input
+    user_input[strcspn(user_input, "\n")] = '\0';
 	
-    // Enter your code under here
-    // Use strcmp(user_input, country_codes[0].domain) to compare the text in user_input to the text in country_codes[0].domain.
-    int i = 0;
-    int x = 0;
-    
     // Loop through the array of ccTLDs to find a match
-    do {
-        i++;
-        x = strcmp(user_input, country_codes[i].domain);
-    } while (x != 0 && i != 258);
+    int found = 0;
+    for (int i = 0; i < 258; i++) {
+        if (strcmp(user_input, country_codes[i].domain) == 0) {
+            printf("This is the domain for: %s\n", country_codes[i].country);
+            found = 1;
+            break;
+        }
+    }
 
-    // Display the corresponding country if a match is found, otherwise display "Domain not found"
-    if (x == 0) {
-        printf("This is the domain for: %s", country_codes[i].country);
-    } else {
-        printf("Domain not found");
+    // If no match is found, display "Domain not found"
+    if (!found) {
+        printf("Domain not found.\n");
     }
 
     // Do not edit below here
